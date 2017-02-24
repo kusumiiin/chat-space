@@ -9,7 +9,7 @@ Things you may want to cover:
 5
 * Database creation
 ___
-messages  
+messages
 ___
 | *column* |  *type*   |
 |:---------|----------:|
@@ -20,7 +20,7 @@ ___
 belongs_to :user  
 belongs_to :group  
 ___
-users  
+users
 ___
 | *column* |  *type*  |
 |:---------|---------:|
@@ -34,7 +34,7 @@ has_many :messages
 has_many :group_users  
 has_many :groups, through: :group_users  
 ___
-groups  
+groups
 ___
 | *column* |  *type*  |
 |:---------|---------:|
@@ -44,7 +44,7 @@ has_many :messages
 has_many :group_users  
 has_many :users, through: :group_users  
 ___
-group_users  
+group_users
 ___
 | *column* |  *type*   |
 |:---------|----------:|
