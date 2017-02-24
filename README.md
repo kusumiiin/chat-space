@@ -6,53 +6,53 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
-
+5
 * Database creation
 ___
-messages_table
+messages
 ___
 | *column* |  *type*  |
 |:---------|---------:|
 |body      |text      |
 |image     |string    |
-|group_id  |integer   |
-|user_id   |integer   |
+|group_id  |references|
+|user_id   |references|
+belongs_to :user  
+belongs_to :group
 ___
-users_table
+users
 ___
 | *column* |  *type*  |
 |:---------|---------:|
-|email     |string    |
-|password  |string    |
 |nickname  |string    |
 email null:false  
 add_index :users, :email  
-password null:false
+password null:false  
+nickname null:false  
+add_index :users, :nickname  
+has_many :messages  
+has_many :group_users  
+has_many :groups, :through => :group_users
 ___
-groups_table
+groups
 ___
 | *column* |  *type*  |
 |:---------|---------:|
 |name      |string    |
+name null:false  
+has_many :messages  
+has_many :group_users  
+has_many :users, :through => :group_users
 ___
-groups_users_table
+group_users
 ___
 | *column* |  *type*  |
 |:---------|---------:|
-|user_id   |integer   |
-|group_id  |integer   |
+|user_id   |references|
+|group_id  |references|
+belongs_to :user  
+belongs_to :group
+___
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
