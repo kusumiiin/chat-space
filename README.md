@@ -18,7 +18,7 @@ ___
 |group_id  |references|
 |user_id   |references|  
 belongs_to :user  
-belongs_to :group
+belongs_to :group  
 ___
 users
 ___
@@ -32,7 +32,7 @@ nickname null:false
 add_index :users, :nickname, unique: true  
 has_many :messages  
 has_many :group_users  
-has_many :groups, through: :group_users
+has_many :groups, through: :group_users  
 ___
 groups
 ___
@@ -42,7 +42,7 @@ ___
 name null:false  
 has_many :messages  
 has_many :group_users  
-has_many :users, through: :group_users
+has_many :users, through: :group_users  
 ___
 group_users
 ___
@@ -51,7 +51,7 @@ ___
 |user_id   |references|
 |group_id  |references|  
 belongs_to :user  
-belongs_to :group
+belongs_to :group  
 ___
 
 
