@@ -7,7 +7,8 @@ Things you may want to cover:
 
 * Ruby version
 5
-* Database creation
+* Database creation  
+
 ___
 messages
 ___
