@@ -105,10 +105,16 @@ html, body,
     background-color: #808080;
     float: right;
     padding: 20px 40px;
-    input {
+    textarea {
       width: calc(100% - 150px);
       height: 50px;
-      }
+    }
+    i {
+    position: relative;
+    top: -20px;
+    right: 50px;
+    padding: 10px;
+    }
    &--submit {
      width: 100px;
      height: 50px;
