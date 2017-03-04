@@ -119,14 +119,14 @@ html, body,
     }
    &--submit {
      width: 90px;
-     height: 50px;
+     height: 40px;
      text-align: center;
      background-color: #38AEF0;
      float: right;
-    p {
+     padding-top: 10px;
+    label {
       color: #FFFFFF;
       font-size: 20px;
-      padding-top: 10px;
       }
      }
     }
