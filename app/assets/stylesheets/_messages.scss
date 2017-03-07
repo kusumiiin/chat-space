@@ -1,133 +1,151 @@
 @import "./clearfix";
-html, body,
+@import "./_variable";
+html,
+body,
 .content {
-  @include clearfix();
-  height: 100%;
-  width: 100%;
-  &__top {
-    height: 100px;
-    width: 100%;
-    &__left {
-      height: 100px;
-      width: 260px;
-      float: left;
-      padding: 0 20px;
-      background-color: #253141;
-      h3 {
-        display: inline-block;
-        font-style: Bold;
-        color: #FFFFFF;
-        margin: 40px 0 ;
-        }
-      .icon {
-        float: right;
-        margin: 40px 0;
-        color: #FFFFFF;
-        }
-      }
-    &__right {
-      height: 100px;
-      width: calc(100% - 380px);
-      float: left;
-      padding: 0 40px;
-      border-bottom: hidden 1px;
-      border-bottom-color: #eeeeee;
-      p {
-        display: inline-block;
-        font-size: 20px;
-        color: #333333;
-        margin: 35px 0 15px 0;
-        }
-      h3 {
-        font-size: 12px;
-        color: #999999;
-        }
-      h4 {
-        font-size: 10px;
-        color: #38AEF0;
-        text-align: center;
-        padding: 10px 20px 5px;
-        margin: 28px ;
-        height: 20px;
-        float: right;
-        border: solid 1px;
-        border-color: #38AEF0;
-        color: #38AEF0;
-        }
-      }
-    }
-  &__left {
-    background-color: #2f3e51;
-    padding: 0 20px;
-    width: 260px;
-    height: 100%;
-    float: left;
-    p {
-      font-size: 15px;
-      color: #FFFFFF;
-      margin: 20px 0 5px;
-      }
-    h3 {
-      font-size: 11px;
-      color: #FFFFFF;
-      margin: 0 0 40px 0;
-      }
-  }
-  &__right {
     @include clearfix();
-    background-color: #AAAAAA;
-    padding: 0 40px;
-    width: calc(100% - 380px);
-    height: calc(100% - 90px);
-    float: right;
-    p {
-      font-size: 16px;
-      color: #434A54;
-      font-type: Bold;
-      margin: 40px 0 10px 0;
-      float: left;
-      }
-    h4 {
-      fons-size: 12px;
-      color: #999999;
-      margin: 40px 0 10px 10px;
-      display: inline-block;
-      }
-    h3 {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #434A54;
-      }
-  }
-  &__bottom {
-    width: calc(100% - 380px);
-    height: 50px;
-    background-color: #808080;
-    float: left;
-    padding: 20px 40px;
-    textarea {
-      width: calc(100% - 150px);
-      height: 38px;
-      padding-top: 12px;
-      padding-left: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    &__left {
+        padding: 0 20px;
+        width: 260px;
+        height: 100%;
+        float: left;
+        background-color: #{$navy};
+        &__top {
+            height: 100px;
+            width: 260px;
+            position: relative;
+            right: 20px;
+            padding: 0 20px;
+            background-color: #{$darknavy};
+            &--text {
+                display: inline-block;
+                font-style: bold;
+                color: #{$white};
+                margin: 40px 0;
+            }
+            &--icon {
+                float: right;
+                margin: 40px 0px 40px 70px;
+                color: #{$white};
+            }
+        }
+        .groups {
+            font-size: 15px;
+            color: #{$white};
+            margin: 20px 0 5px;
+        }
+        .messages {
+            font-size: 11px;
+            color: #{$white};
+            margin: 0 0 40px 0;
+        }
     }
-    i {
-    position: relative;
-    top: -20px;
-    right: 50px;
-    padding: 10px;
+    &__right {
+        @include clearfix();
+        width: calc(100% - 300px);
+        height: 100%;
+        float: left;
+        &__top {
+            height: 100px;
+            width: calc(100% - 80px);
+            float: left;
+            padding: 0 40px;
+            border-bottom: hidden 1px;
+            border-bottom-color: #eeeeee;
+            &--group {
+                display: inline-block;
+                font-size: 20px;
+                color: #{$black};
+                margin: 35px 0 15px 0;
+            }
+            .members {
+                font-size: 12px;
+                color: #{$palegray};
+            }
+            .edit {
+                font-size: 10px;
+                color: #{$button-blue};
+                text-align: center;
+                padding: 10px 20px 5px;
+                margin: 28px;
+                height: 20px;
+                float: right;
+                border: solid 1px;
+                border-color: #{$button-blue};
+                color: #{$button-blue};
+            }
+        }
+        &__middle {
+            height: calc(100% - 190px);
+            margin-top: 100px;
+            background-color: #{$gray};
+            .name {
+                font-size: 16px;
+                color: #{$font-gray};
+                font-type: bold;
+                margin: 40px 0 10px 40px;
+                float: left;
+            }
+            .date {
+                fons-size: 12px;
+                color: #{$palegray};
+                margin: 40px 0 10px 10px;
+                display: inline-block;
+            }
+            .text {
+                margin-top: 10px;
+                margin-left: 40px;
+                font-size: 14px;
+                color: #{$font-gray};
+            }
+        }
+        &__bottom {
+            width: calc(100% - 40px);
+            height: 50px;
+            background-color: #{$darkgray};
+            padding: 20px 0 20px 40px;
+            textarea {
+                width: calc(100% - 150px);
+                height: 38px;
+                padding-top: 12px;
+                padding-left: 10px;
+                float: left;
+            }
+            i {
+                position: relative;
+                top: 10px;
+                right: 50px;
+                padding: 10px;
+                display: inline-block;
+            }
+            input.file {
+                opacity: 0;
+                height: 20px;
+                width: 20px;
+                position: absolute;
+                top: 10px;
+            }
+            &--submit {
+                height: 50px;
+                width: 90px;
+                float: left;
+                display: inline-block;
+                margin-left: 15px;
+                position: relative;
+                bottom: 35px;
+                input {
+                    background-color: #{$button-blue};
+                    color: #{$white};
+                    height: 50px;
+                    width: 90px;
+                    padding-top: 10;
+                }
+            }
+        }
     }
-   &--submit {
-     width: 90px;
-     height: 40px;
-     text-align: center;
-     background-color: #38AEF0;
-     float: right;
-     padding-top: 10px;
-    label {
-      color: #FFFFFF;
-      font-size: 20px;
-      }
-     }
-    }
-  }
+}
