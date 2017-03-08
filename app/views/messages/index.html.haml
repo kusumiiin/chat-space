@@ -9,15 +9,15 @@
           %i.fa.fa-pencil-square-o
           %a
           %i.fa.fa-cog
-        .sidebar
-          .groups
+        .group
+          .group__name
             %p sampleグループ
-          .messages
+          .group__last--message
             %h3 まだメッセージはありません。
-        .sidebar
-          .groups
+        .group
+          .group__name
             %p sampleグループ2
-          .messages
+          .group__last--message
             %h3 まだメッセージはありません。
     .content__right
       .content__right__top
@@ -28,22 +28,22 @@
         .members
           %h3 Members kusumi kusumi2
       .content__right__middle
-        .messages-data
-          .name
+        .message__data
+          .message__data--name
             %p kusumi
-          .date
+          .message__data--date
             %h4 2017/3/2
-          .text
+          .message__data--text
             %h3 sample text
-        .messages-data
-          .name
+        .message-data
+          .message__data--name
             %p kusumi2
-          .date
+          .message__data--date
             %h4 2017/3/3
-          .text
+          .message__data--text
             %h3 sample text2
       .content__right__bottom
-        %textarea{:placeholder => "type a message"}
+        %textarea.input{:placeholder => "type a message"}
         %i.fa.fa-picture-o
         %input.file{:type => "file"}
         .content__right__bottom--submit
