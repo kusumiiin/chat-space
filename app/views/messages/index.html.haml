@@ -43,8 +43,9 @@
           .message__data--text
             %h3 sample text2
       .content__right__bottom
-        %textarea.input{:placeholder => "type a message"}
-        %i.fa.fa-picture-o
+        %textarea.type{:placeholder => "type a message"}
+        .content__right__bottom--icon
+          %i.fa.fa-picture-o
         %input.file{:type => "file"}
         .content__right__bottom--submit
           %input{:type => "submit", :value => "Send"}

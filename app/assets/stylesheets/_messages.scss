@@ -23,7 +23,7 @@ body,
             &--text {
                 display: inline-block;
                 font-style: bold;
-                color: #{$white};
+                color: $white;
                 margin: 40px 0;
             }
             &--icon {
@@ -47,7 +47,7 @@ body,
     }
     &__right {
         @include clearfix();
-        width: calc(100% - 300px);
+        width: calc(100vw - 300px);
         height: 100%;
         float: left;
         &__top {
@@ -110,19 +110,19 @@ body,
             height: 50px;
             background-color: $darkgray;
             padding: 20px 0 20px 40px;
-            textarea.input {
+            .type {
                 width: calc(100% - 190px);
                 height: 38px;
                 padding-top: 12px;
                 padding-left: 10px;
                 float: left;
             }
-            i {
-                position: relative;
-                top: 10px;
-                right: 50px;
-                padding: 10px;
+            &--icon {
                 display: inline-block;
+                width: 20px;
+                position: relative;
+                right: 30px;
+                top: 15px;
             }
             input.file {
                 opacity: 0;
@@ -130,16 +130,16 @@ body,
                 width: 20px;
                 position: relative;
                 top: 10px;
-                right: 85px;
+                right: 55px;
             }
             &--submit {
                 height: 50px;
                 width: 90px;
                 float: right;
                 display: inline-block;
-                margin-right: 60px;
+                margin-right: 70px;
                 position: relative;
-                bottom: 35px;
+                bottom: 22px;
                 input {
                     background-color: $button-blue;
                     color: $white;
