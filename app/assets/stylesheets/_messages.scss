@@ -1,0 +1,156 @@
+html,
+body,
+.content {
+    @include clearfix();
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    &__left {
+        padding: 0 20px;
+        width: 260px;
+        height: 100%;
+        float: left;
+        background-color: $navy;
+        &__top {
+            height: 100px;
+            width: 260px;
+            position: relative;
+            right: 20px;
+            padding: 0 20px;
+            background-color: $darknavy;
+            &--text {
+                display: inline-block;
+                font-style: bold;
+                color: $white;
+                margin: 40px 0;
+            }
+            &--icon {
+                float: right;
+                margin: 40px 0px 40px 70px;
+                color: $white;
+            }
+        }
+        .group {
+            &__name {
+                font-size: 15px;
+                color: $white;
+                margin: 20px 0 5px;
+            }
+            &__last--message {
+                font-size: 11px;
+                color: $white;
+                margin: 0 0 40px 0;
+            }
+        }
+    }
+    &__right {
+        @include clearfix();
+        width: calc(100vw - 300px);
+        height: 100%;
+        float: left;
+        &__top {
+            height: 100px;
+            width: calc(100% - 80px);
+            float: left;
+            padding: 0 40px;
+            border-bottom: hidden 1px;
+            &--group {
+                display: inline-block;
+                font-size: 20px;
+                color: $black;
+                margin: 35px 0 15px 0;
+            }
+            .members {
+                font-size: 12px;
+                color: $palegray;
+            }
+            .edit {
+                font-size: 10px;
+                color: $button-blue;
+                text-align: center;
+                padding: 10px 20px 5px;
+                margin: 28px;
+                height: 20px;
+                float: right;
+                border: solid 1px;
+                border-color: $button-blue;
+                color: $button-blue;
+            }
+        }
+        &__middle {
+            height: calc(100% - 190px);
+            margin-top: 100px;
+            background-color: $gray;
+            .message__data {
+                &--name {
+                    font-size: 16px;
+                    color: $font-gray;
+                    font-type: bold;
+                    margin: 40px 0 10px 40px;
+                    float: left;
+                }
+                &--date {
+                    font-size: 12px;
+                    color: $palegray;
+                    margin: 40px 0 10px 10px;
+                    display: inline-block;
+                }
+                &--text {
+                    margin-top: 10px;
+                    margin-left: 40px;
+                    font-size: 14px;
+                    color: $font-gray;
+                }
+            }
+        }
+        &__bottom {
+            width: calc(100% - 40px);
+            height: 50px;
+            background-color: $darkgray;
+            padding: 20px 0 20px 40px;
+            .type {
+                width: calc(100% - 190px);
+                height: 38px;
+                padding-top: 12px;
+                padding-left: 10px;
+                float: left;
+            }
+            &--icon {
+                display: inline-block;
+                width: 20px;
+                position: relative;
+                right: 30px;
+                top: 15px;
+            }
+            input.file {
+                opacity: 0;
+                height: 20px;
+                width: 20px;
+                position: relative;
+                top: 10px;
+                right: 55px;
+            }
+            &--submit {
+                height: 50px;
+                width: 90px;
+                float: right;
+                display: inline-block;
+                margin-right: 70px;
+                position: relative;
+                bottom: 22px;
+                input {
+                    background-color: $button-blue;
+                    color: $white;
+                    height: 50px;
+                    width: 90px;
+                    padding-top: 10;
+                }
+            }
+        }
+    }
+}
+
+
+
