@@ -4,3 +4,14 @@
 @import "./variable";
 @import "./messages";
 @import "user";
+
+.notice {
+  background-color: $button-blue;
+  text-align: center;
+  color: $white;
+}
+.alert {
+  background-color: $button-blue;
+  text-align: center;
+  color: $white;
+}
