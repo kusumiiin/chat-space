@@ -2,16 +2,8 @@
 @import "./reset";
 @import "./clearfix";
 @import "./variable";
+@import "./flash";
 @import "./messages";
-@import "user";
+@import "./user";
 
-.notice {
-  background-color: $button-blue;
-  text-align: center;
-  color: $white;
-}
-.alert {
-  background-color: $button-blue;
-  text-align: center;
-  color: $white;
-}
+
