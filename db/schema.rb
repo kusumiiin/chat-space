@@ -15,6 +15,10 @@ ActiveRecord::Schema.define(version: 20170311125508) do
   create_table "group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.index ["group_id"], name: "index_group_users_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_group_users_on_user_id", using: :btree
   end
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -28,6 +32,10 @@ ActiveRecord::Schema.define(version: 20170311125508) do
     t.string   "image"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.index ["group_id"], name: "index_messages_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
