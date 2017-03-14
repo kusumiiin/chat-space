@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
-before_action :set_group, only: [:edit, :update]
+
+  before_action :set_group, only: [:edit, :update]
+
   def new
     @group = Group.new
   end
@@ -9,12 +11,8 @@ before_action :set_group, only: [:edit, :update]
     if @group.save
       redirect_to root_path, success: "グループの作成が完了しました"
     else
-      render "new", alert: "グループの作成に失敗しました"
+      render :new, alert: "グループの作成に失敗しました"
     end
-  end
-
-  def set_group
-    @group = Group.find(params[:id])
   end
 
   def edit
@@ -24,7 +22,7 @@ before_action :set_group, only: [:edit, :update]
     if @group.update(group_params)
       redirect_to root_path, success: "グループの更新が完了しました"
     else
-      render "edit", alert: "グループの更新に失敗しました"
+      render :edit, alert: "グループの更新に失敗しました"
     end
   end
 
@@ -33,6 +31,10 @@ before_action :set_group, only: [:edit, :update]
 
   def group_params
     params.require(:group).permit(:name)
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 
 
