@@ -1,0 +1,24 @@
+= form_for (@group) do |f|
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :name, "グループ名", class: "label"
+    .chat-group-form__field--right
+      = f.text_field :name, placeholder: :"グループ名を入力してください",class: "chat-group-form__input"
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :チャットメンバーを追加, "チャットメンバーを追加", class: "label"
+    .chat-group-form__field--right
+      .chat-group-form__search.clearfix
+        %input#chat_group_name.chat-group-form__input{placeholder: :"追加したいユーザーを入力してください", :type => "text"}/
+      #user-search-result
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :チャットメンバー, "チャットメンバー", class: "label"
+    .chat-group-form__field--right
+      #chat-group-users
+        .chat-group-user.clearfix
+          %p.chat-group-user__name kusumi
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit "Save", class: "btn"
