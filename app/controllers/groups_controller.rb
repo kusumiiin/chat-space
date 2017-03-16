@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @user = User.where.not(id: current_user[:id])
   end
 
   def create
@@ -16,6 +17,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @user = User.where.not(id: current_user[:id])
   end
 
   def update
