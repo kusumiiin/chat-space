@@ -15,7 +15,7 @@
     .chat-group-form__field--right
       = f.collection_check_boxes :user_ids, @user, :id, :name do |b|
         =b.label {b.check_box + b.text}
-      = hidden_field_tag 'user_ids', current_user[:id]
+      = hidden_field_tag 'group[user_ids][]', current_user[:id]
       / #chat-group-users
       /   .chat-group-user.clearfix
       /     %p.chat-group-user__name kusumi
