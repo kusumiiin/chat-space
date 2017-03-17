@@ -21,12 +21,12 @@
             %h3 まだメッセージはありません。
     .content__right
       .content__right__top
-        .content__right__top--group
-          %p sampleグループ
-        .edit
-          %a Edit
-        .members
-          %h3 Members kusumi kusumi2
+        / .content__right__top--group
+        /   %p sampleグループ
+        / .edit
+        /   %a Edit
+        / .members
+        /   %h3 Members kusumi kusumi2
       .content__right__middle
         .message__data
           .message__data--name
@@ -42,12 +42,12 @@
             %h4 2017/3/3
           .message__data--text
             %h3 sample text2
-      .content__right__bottom
-        %textarea.type{:placeholder => "type a message"}
-        / =form_for (@message) do |f|
-        /   =f.text_field :body, placeholder: :"type a message", class: "type"
-        .content__right__bottom--icon
-          %i.fa.fa-picture-o
-        %input.file{:type => "file"}
-        .content__right__bottom--submit
-          %input{:type => "submit", :value => "Send"}
+      / .content__right__bottom
+      /   %textarea.type{:placeholder => "type a message"}
+      /   / =form_for (@message) do |f|
+      /   /   =f.text_field :body, placeholder: :"type a message", class: "type"
+      /   .content__right__bottom--icon
+      /     %i.fa.fa-picture-o
+      /   %input.file{:type => "file"}
+      /   .content__right__bottom--submit
+      /     %input{:type => "submit", :value => "Send"}
