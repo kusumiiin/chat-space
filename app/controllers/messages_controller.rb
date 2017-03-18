@@ -1,8 +1,5 @@
 class MessagesController < ApplicationController
 
-  def top
-  end
-
   def index
     @group = Group.find(params[:group_id])
     @message = Message.new
