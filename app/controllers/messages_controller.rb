@@ -6,18 +6,15 @@ class MessagesController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @message = Message.new
+    @messages = Message.where(group_id: @group.id)
   end
-
-  # def new
-  #   @message = Message.new
-  # end
 
   def create
     @message = Message.new(message_params)
     if @message.save
-      render :index
+      redirect_to group_messages_path
     else
-      render :new, alert: "本文がありません"
+      redirect_to group_messages_path, alert: "本文がありません"
     end
   end
 
