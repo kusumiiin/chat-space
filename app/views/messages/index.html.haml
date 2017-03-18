@@ -11,8 +11,7 @@
           = user.name
     .content__right__middle
       .message__data
-      - @messages.each do |message|
-        = render "_messages"
+        = render "_messages-data", "@messages"
     .content__right__bottom
       =form_for [@group, @message] do |f|
         =f.text_field :body, placeholder: "type a message", class: "type"
