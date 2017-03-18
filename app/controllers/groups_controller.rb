@@ -2,6 +2,9 @@ class GroupsController < ApplicationController
 
   before_action :set_group, only: [:edit, :update]
 
+  def index
+  end
+
   def new
     @group = Group.new
     @user = User.where.not(id: current_user[:id])
@@ -10,7 +13,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to root_path, success: "グループの作成が完了しました"
+      redirect_to group_messages_path, success: "グループの作成が完了しました"
     else
       render :new, alert: "グループの作成に失敗しました"
     end
@@ -22,7 +25,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to root_path, success: "グループの更新が完了しました"
+      redirect_to group_messages_path, success: "グループの更新が完了しました"
     else
       render :edit, alert: "グループの更新に失敗しました"
     end

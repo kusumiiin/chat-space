@@ -1,0 +1,21 @@
+%body
+  .content
+    .content__left
+      .content__left__top
+        .content__left__top--text
+          = current_user.name
+        .content__left__top--icon
+          = link_to new_group_path do
+            = fa_icon "pencil-square-o"
+          %a
+          = fa_icon "cog"
+        .group
+        - current_user.groups.each do |group|
+          .group__name
+            = group.name
+          .group__last--message
+          - unless group.messages.last.nil?
+            = group.messages.last.body
+          - else
+            まだメッセージがありません
+    .content__right--index
