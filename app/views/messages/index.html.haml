@@ -1,47 +1,23 @@
-%body
-  .content
-    .content__left
-      .content__left__top
-        .content__left__top--text
-          = current_user.name
-        .content__left__top--icon
-          = link_to new_group_path do
-            = fa_icon "pencil-square-o"
-          %a
-          = fa_icon "cog"
-        .group
-        - current_user.groups.each do |group|
-          .group__name
-            = group.name
-          .group__last--message
-          - unless group.messages.last.nil?
-            = group.messages.last.body
-          - else
-            まだメッセージがありません
-    .content__right
-      .content__right__top
-        .content__right__top--group
-        = @group.name
-        .edit
-          = link_to "Edit", edit_group_path(@group)
-        .members
-          %h3 Members
-          - @group.users.each do |user|
-            = user.name
-      .content__right__middle
-        .message__data
-        - @messages.each do |message|
-          .message_data--name
-            = message.user.name
-          .message_date--date
-            = message.created_at
-          .message_data--text
-            = message.body
-      .content__right__bottom
-        =form_for [@group, @message], url: "", method: :post do |f|
-          =f.text_field :body, placeholder: "type a message", class: "type"
-          .content__right__bottom--icon
-            = fa_icon "picture-o"
-          =f.file_field :file, class: "file"
-          .content__right__bottom--submit
-            =f.submit "Send", class: "input"
+= render "/groups/contents-left" do
+  .content__right
+    .content__right__top
+      .content__right__top--group
+      = @group.name
+      .edit
+        = link_to "Edit", edit_group_path(@group)
+      .members
+        %h3 Members
+        - @group.users.each do |user|
+          = user.name
+    .content__right__middle
+      .message__data
+      - @messages.each do |message|
+        = render "_messages"
+    .content__right__bottom
+      =form_for [@group, @message] do |f|
+        =f.text_field :body, placeholder: "type a message", class: "type"
+        .content__right__bottom--icon
+          = fa_icon "picture-o"
+        =f.file_field :file, class: "file"
+        .content__right__bottom--submit
+          =f.submit "Send", class: "input"
