@@ -1,18 +1,42 @@
-= render "/groups/contents-left" do
+.content
+  .content__left
+    .content__left__top
+      .content__left__top--text
+        = current_user.name
+      .content__left__top--icon
+        = link_to new_group_path do
+          = fa_icon "pencil-square-o"
+        = link_to edit_user_registration_path do
+          = fa_icon "cog"
+      .content__left__groups--info
+        - current_user.groups.each do |group|
+          =link_to group_messages_path(group) do
+            .group__name
+              = group.name
+            - unless group.messages.last.nil?
+              .group__last--message= group.messages.last.body
+            - else
+              .group__last--message まだメッセージがありません
   .content__right
     .content__right__top
-      .content__right__top--group
-      = @group.name
+      .content__right__top--group= @group.name
       .edit
         = link_to "Edit", edit_group_path(@group)
-      .members
-        %h3 Members
-        - @group.users.each do |user|
-          = user.name
+      %ul.members Members
+      - @group.users.each do |user|
+        %li.members__name= user.name
     .content__right__middle
-      .message__data
-        = render "_messages-data", "@messages"
+      - @messages.each do |message|
+        .message__data
+          .message__data--name= message.user.name
+          .message__data--date= message.created_at
+          .message__data--text= message.body
     .content__right__bottom
+      -if @message.errors.any?
+        #error_explanation
+          %ul
+          - @message.errors.full_messages.each do |message|
+            %li= message
       =form_for [@group, @message] do |f|
         =f.text_field :body, placeholder: "type a message", class: "type"
         .content__right__bottom--icon
