@@ -7,18 +7,18 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = current_user.messages.build(message_params)
     if @message.save
-      redirect_to group_messages_path
+      redirect_to group_messages_path, success: "メッセージを送信しました"
     else
-      redirect_to group_messages_path, alert: "本文がありません"
+      redirect_to group_messages_path
     end
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:body).merge(user_id: current_user.id, group_id: params[:group_id])
+    params.require(:message).permit(:body).merge(group_id: params[:group_id])
   end
 
 end
