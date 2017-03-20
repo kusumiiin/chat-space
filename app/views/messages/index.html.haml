@@ -32,11 +32,6 @@
           .message__data--date= message.created_at
           .message__data--text= message.body
     .content__right__bottom
-      -if @message.errors.any?
-        #error_explanation
-          %ul
-          - @message.errors.full_messages.each do |message|
-            %li= message
       =form_for [@group, @message] do |f|
         =f.text_field :body, placeholder: "type a message", class: "type"
         .content__right__bottom--icon

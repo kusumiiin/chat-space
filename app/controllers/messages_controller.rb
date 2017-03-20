@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to group_messages_path, success: "メッセージを送信しました"
     else
-      redirect_to group_messages_path
+      redirect_to group_messages_path, alert: "#{@message.errors.full_messages[0]}"
     end
   end
 
