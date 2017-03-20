@@ -1,51 +1,20 @@
-%body
-  .content
-    .content__left
-      .content__left__top
-        .content__left__top--text
-          %h3 kusumi
-        .content__left__top--icon
-          %a
-          %i.fa.fa-pencil-square-o
-          %a
-          %i.fa.fa-cog
-        .group
-          .group__name
-            %p sampleグループ
-          .group__last--message
-            %h3 まだメッセージはありません。
-        .group
-          .group__name
-            %p sampleグループ2
-          .group__last--message
-            %h3 まだメッセージはありません。
-    .content__right
-      .content__right__top
-        .content__right__top--group
-          %p sampleグループ
-        .edit
-          %a Edit
-        .members
-          %h3 Members kusumi kusumi2
-      .content__right__middle
-        .message__data
-          .message__data--name
-            %p kusumi
-          .message__data--date
-            %h4 2017/3/2
-          .message__data--text
-            %h3 sample text
-        .message-data
-          .message__data--name
-            %p kusumi2
-          .message__data--date
-            %h4 2017/3/3
-          .message__data--text
-            %h3 sample text2
-      .content__right__bottom
-        %textarea.type{:placeholder => "type a message"}
+.content
+  = render "/templates/content-left"
+  .content__right
+    .content__right__top
+      .content__right__top--group= @group.name
+      .edit
+        = link_to "Edit", edit_group_path(@group)
+      %ul.members Members
+      - @group.users.each do |user|
+        %li.members__name= user.name
+    .content__right__middle
+      = render @messages
+    .content__right__bottom
+      =form_for [@group, @message] do |f|
+        =f.text_field :body, placeholder: "type a message", class: "type"
         .content__right__bottom--icon
-          %i.fa.fa-picture-o
-        %input.file{:type => "file"}
+          = fa_icon "picture-o"
+        =f.file_field :file, class: "file"
         .content__right__bottom--submit
-          %input{:type => "submit", :value => "Send"}
+          =f.submit "Send", class: "input"
