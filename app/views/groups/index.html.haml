@@ -1,21 +1,4 @@
 .content
-  .content__left
-    .content__left__top
-      .content__left__top--text
-        = current_user.name
-      .content__left__top--icon
-        = link_to new_group_path do
-          = fa_icon "pencil-square-o"
-        = link_to edit_user_registration_path do
-          = fa_icon "cog"
-      .content__left__groups--info
-        - current_user.groups.each do |group|
-          =link_to group_messages_path(group) do
-            .group__name
-              = group.name
-            - unless group.messages.last.nil?
-              .group__last--message= group.messages.last.body
-            - else
-              .group__last--message まだメッセージがありません
+  = render "content-left"
   .content__right--index
 
