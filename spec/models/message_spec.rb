@@ -3,7 +3,8 @@ describe Message do
   describe '#create' do
     it "is invalid without body" do
       message = build(:message, body: "")
-      expect(message).not_to be_valid
+      message.valid?
+      expect(message.errors[:body]).to include("を入力してください。")
     end
 
     it "is valid with body" do
