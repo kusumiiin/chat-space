@@ -37,9 +37,9 @@ describe MessagesController do
 
 
     it "can save message" do
-      expect{
+      expect {
         post :create, params: { group_id: group.id, message: attributes_for(:message) }
-    }.to change(Message, :count).by(1)
+      }.to change(Message, :count).by(1)
     end
 
     it "redirect to messages#index" do
@@ -48,11 +48,14 @@ describe MessagesController do
     end
 
     it 'can not save message' do
-      expect(message.save).not_to change(Message, :count).by(1)
+      expect {
+        post :create, params: { body: "", group_id: group.id, message: attributes_for(:message)}
+      }
     end
 
     it 'redirects to messages#index' do
-       expect(response).to redirect_to group_messages_path
+      post :create, params: { body: "", group_id: group.id, message: attributes_for(:message)}
+      expect(response).to redirect_to group_messages_path
     end
 
   end
