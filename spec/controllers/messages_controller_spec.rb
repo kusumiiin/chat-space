@@ -11,7 +11,7 @@ describe MessagesController do
 
   describe 'GET #index' do
     before do
-      get :index, group_id: group.id
+      get :index, params: { group_id: group.id }
     end
 
     it "populates an array of messages" do
