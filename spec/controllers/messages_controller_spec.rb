@@ -23,7 +23,7 @@ describe MessagesController do
     end
 
     it "populates an array of message" do
-      expect(assigns(:message)).to eq message
+      expect(assigns(:message)).to be_a_new(Message)
 
     end
 
@@ -50,7 +50,7 @@ describe MessagesController do
     it 'can not save message' do
       expect {
         post :create, params: { group_id: group.id, message: attributes_for(:message, body: "")}
-      }
+      }.not_to change(Message, :count)
     end
 
     it 'redirects to messages#index' do
@@ -60,8 +60,7 @@ describe MessagesController do
 
     it "get flash message" do
       post :create, params: { group_id: group.id, message: attributes_for(:message, body: "")}
-      message.valid?
-      expect(message.errors[:body]).to include ("を入力してください。")
+      expect(flash[:alert]).to include ("本文を入力してください。")
     end
 
   end
