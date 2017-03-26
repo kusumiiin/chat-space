@@ -49,13 +49,19 @@ describe MessagesController do
 
     it 'can not save message' do
       expect {
-        post :create, params: { body: "", group_id: group.id, message: attributes_for(:message)}
+        post :create, params: { group_id: group.id, message: attributes_for(:message, body: "")}
       }
     end
 
     it 'redirects to messages#index' do
-      post :create, params: { body: "", group_id: group.id, message: attributes_for(:message)}
+      post :create, params: { group_id: group.id, message: attributes_for(:message, body: "")}
       expect(response).to redirect_to group_messages_path
+    end
+
+    it "get flash message" do
+      post :create, params: { group_id: group.id, message: attributes_for(:message, body: "")}
+      message.valid?
+      expect(message.errors[:body]).to include ("を入力してください。")
     end
 
   end
