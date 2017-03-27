@@ -9,7 +9,10 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.build(message_params)
     if @message.save
-      redirect_to group_messages_path, success: "メッセージを送信しました"
+      respond_to do |format|
+        format.html { redirect_to group_messages_path, success: "メッセージを送信しました" }
+        format.json { render json: @message}
+      end
     else
       redirect_to group_messages_path, alert: @message.errors.full_messages[0]
     end
