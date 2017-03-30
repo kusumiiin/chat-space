@@ -8,13 +8,13 @@
       %ul.members Members
       - @group.users.each do |user|
         %li.members__name= user.name
-    .content__right__middle
+    .content__right__middle#list
       = render @messages
     .content__right__bottom
       =form_for [@group, @message] do |f|
-        =f.text_field :body, placeholder: "type a message", class: "type"
+        =f.text_field :body, placeholder: "type a message", class: "type", id: "text_field"
         .content__right__bottom--icon
           = fa_icon "picture-o"
         =f.file_field :file, class: "file"
         .content__right__bottom--submit
-          =f.submit "Send", class: "input"
+          =f.submit "Send", class: "input", id: "input"
