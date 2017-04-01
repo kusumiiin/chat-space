@@ -1,16 +1,16 @@
 $(function() {
   function buildHTML(message) {
-    var html = '<div class="message__data">' +
-                 '<div class="message__data--name">' +
-                   `${message.user_name}` +
-                 '</div>' +
-                 '<div class="message__data--date">' +
-                   `${message.created_at}` +
-                 '</div>' +
-                 '<div class="message__data--text">' +
-                   `${message.body}` +
-                 '</div>' +
-               '</div>';
+    var html = `<div class="message__data">
+                 <div class="message__data--name">
+                   ${message.user_name}
+                 </div>
+                 <div class="message__data--date">
+                   ${message.created_at}
+                 </div>
+                 <div class="message__data--text">
+                   ${message.body}
+                 </div>
+               </div>`;
      return html;
   }
   $('#new_message').on('submit', function(e) {
