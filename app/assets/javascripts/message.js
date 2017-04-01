@@ -1,14 +1,14 @@
 $(function() {
   function buildHTML(message) {
     var html = '<div class="message__data">' +
-                 '<div class="message__data--name' +
-                   'message.user.name' +
+                 '<div class="message__data--name">' +
+                   `${message.user_name}` +
                  '</div>' +
-                 '<div class="message__data--date' +
-                   'message.created_at' +
+                 '<div class="message__data--date">' +
+                   `${message.created_at}` +
                  '</div>' +
-                 '<div class="message__data--text' +
-                   'message.body' +
+                 '<div class="message__data--text">' +
+                   `${message.body}` +
                  '</div>' +
                '</div>';
      return html;
@@ -31,10 +31,10 @@ $(function() {
     .done(function(data) {
       var html = buildHTML(data);
       $('#list').append(html);
-      $('#input').prop('disabled', false);
       var height = $('#list').height();
-      $("#list").scrollTop(height);
+      $("#list").animate({scrollTop: height});
       form.reset();
+      $('#input').prop('disabled', false);
     })
     .fail(function() {
       alert('error');
