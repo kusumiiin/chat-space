@@ -13,6 +13,12 @@ $(function() {
                </div>`;
      return html;
   }
+  function buildFLASH(flash) {
+    var flash = `<div class="success">
+                   "メッセージを送信しました"
+                 </div>`;
+    return flash;
+  }
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var form = this;
@@ -29,6 +35,8 @@ $(function() {
       datatype: 'json'
     })
     .done(function(data) {
+      var flash = buildFLASH(data.flash);
+      $('#body').append(flash);
       var html = buildHTML(data.message);
       $('#list').append(html);
       var height = $('#list').height();
