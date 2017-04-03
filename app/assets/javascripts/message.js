@@ -32,12 +32,13 @@ $(function() {
       var html = buildHTML(data);
       $('#list').append(html);
       var height = $('#list').height();
-      $("#list").animate({scrollTop: height});
+      $("#message_wrapper").animate({scrollTop: height});
       form.reset();
       $('#input').prop('disabled', false);
     })
     .fail(function() {
       alert('error');
+      $('#input').prop('disabled', false);
     });
   });
 });
