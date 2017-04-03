@@ -29,7 +29,7 @@ $(function() {
       datatype: 'json'
     })
     .done(function(data) {
-      var html = buildHTML(data);
+      var html = buildHTML(data.message);
       $('#list').append(html);
       var height = $('#list').height();
       $("#message_wrapper").animate({scrollTop: height});
