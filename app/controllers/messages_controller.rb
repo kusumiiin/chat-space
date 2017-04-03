@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path, success: "メッセージを送信しました" }
-        format.json { render json: { body: @message.body, created_at: @message.created_at, user_name: @message.user.name } }
+        format.json
       end
     else
       redirect_to group_messages_path, alert: @message.errors.full_messages[0]
