@@ -14,10 +14,10 @@ $(function() {
      return html;
   }
   function buildFLASH(flash) {
-    var flash = `<div class="success">
-                   "メッセージを送信しました"
-                 </div>`;
-    return flash;
+    var flash_message = `<div class="success">
+                           ${flash.success}
+                         </div>`;
+    return flash_message;
   }
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
@@ -35,8 +35,9 @@ $(function() {
       datatype: 'json'
     })
     .done(function(data) {
-      var flash = buildFLASH(data.flash);
-      $('#body').append(flash);
+      console.log(data)
+      var flash_message = buildFLASH(data.flash);
+      $('#body').prepend(flash_message);
       var html = buildHTML(data.message);
       $('#list').append(html);
       var height = $('#list').height();
