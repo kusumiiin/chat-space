@@ -14,14 +14,13 @@ $(function() {
      return html;
   }
   function buildFLASH(flash) {
+    var flash_message;
     $.each(flash, function(key, value){
-    var flash_message = `<div class="${key}">
-                         ${flash.value}
-                         </div>`;
+      flash_message = `<div class="${key}">
+                             ${value}
+                           </div>`;
     });
-    return `<div class="success">
-             ${flash.success}
-            </div>`;
+    return flash_message;
   }
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
