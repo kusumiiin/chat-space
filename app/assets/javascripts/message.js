@@ -16,9 +16,9 @@ $(function() {
   function buildFLASH(flash) {
     var flash_message;
     $.each(flash, function(key, value){
-      flash_message = `<div class="${key}">
-                             ${value}
-                           </div>`;
+      flash_message += `<div class="${key}">
+                          ${value}
+                        </div>`;
     });
     return flash_message;
   }
@@ -38,7 +38,6 @@ $(function() {
       datatype: 'json'
     })
     .done(function(data) {
-      console.log(data)
       var flash_message = buildFLASH(data.flash);
       $('#body').prepend(flash_message);
       var html = buildHTML(data.message);
