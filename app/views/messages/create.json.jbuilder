@@ -3,5 +3,7 @@ json.message do
 end
 
 json.flash do
-  json.set! :success, 'メッセージを送信しました'
+  flash.each do |key, value|
+    json.set! key, value
+  end
 end
