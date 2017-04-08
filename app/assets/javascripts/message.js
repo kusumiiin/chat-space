@@ -38,7 +38,6 @@ $(function() {
       datatype: 'json'
     })
     .done(function(data) {
-      console.log(data)
       var flash_message = buildFLASH(data.flash);
       $('#body').prepend(flash_message);
       var html = buildHTML(data.message);
