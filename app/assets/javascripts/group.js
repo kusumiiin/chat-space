@@ -18,7 +18,7 @@ $(function() {
     $('#chat-group-users').append(html);
   }
 
-  $('#chat_group_user').on('keyup', function() {
+  $('#search').on('keyup', function() {
     var input = $('#chat_group_user').val();
     var preInput = '';
     if(preInput !== input){
