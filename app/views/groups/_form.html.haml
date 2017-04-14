@@ -1,25 +1,28 @@
 = form_for (@group) do |f|
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      = f.label :name, "グループ名", class: "label"
+      = f.label :"グループ名", class: "chat-group-form__field--left__label"
     .chat-group-form__field--right
-      = f.text_field :name, placeholder: :"グループ名を入力してください",class: "chat-group-form__input"
-  .chat-group-form__field.clearfix
-  .chat-group-form__field.clearfix
-    .chat-group-form__field--left
-      = f.label :チャットメンバー, "チャットメンバー", class: "label"
-    / .chat-group-form__field--right
-    /   .chat-group-form__search.clearfix
-    /     %input#chat_group_name.chat-group-form__input{placeholder: :"追加したいユーザーを入力してください", :type => "text"}/
-    /   #user-search-result
-    .chat-group-form__field--right
-      = f.collection_check_boxes :user_ids, @user, :id, :name do |b|
-        =b.label {b.check_box + b.text}
-      = hidden_field_tag 'group[user_ids][]', current_user[:id]
-      / #chat-group-users
-      /   .chat-group-user.clearfix
-      /     %p.chat-group-user__name kusumi
+      = f.text_field :name, placeholder: "グループ名を入力してください", class: "chat-group-form__field--right__input", id:"chat_group_name"
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
+      = f.label :"チャットメンバーを追加", class: "chat-group-form__field--left__label"
     .chat-group-form__field--right
-      = f.submit "Save", class: "btn"
+      .chat-group-form__search.clearfix
+        %input.chat-group-form__field--right__input#search{ type: 'text', placeholder: '追加したいユーザー名を入力してください' }
+      #user-search-result
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :"チャットメンバー", class:"chat-group-form__field--left__label"
+    .chat-group-form__field--right
+      #chat-group-users
+        - @group.users.each do |user|
+          .chat-group-user
+            %input{ type: "hidden", name: "group[user_ids][]", value: user.id }
+            %p.chat-group-user__name=user.name
+            - if user.id != current_user.id
+              %a.chat-group-user__btn.chat-group-user__btn--remove 削除
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit "Save", class:"chat-group-form__action-btn"
