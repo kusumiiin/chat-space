@@ -1,6 +1,6 @@
 $(function() {
   function searchedUserList(user) {
-    var html = `<div class="chat-group-user>"
+    var html = `<div class="chat-group-user">
                   <p class="chat-group-user__name">
                     ${user.name}
                   </p>
@@ -12,8 +12,7 @@ $(function() {
   function addedUserList(name, id) {
     var html = `<div class="chat-group-user>"
                   <input name="group[user_ids][]" value="${id}" type="hidden">
-                  <p class="chat-group-user__name"> ${name}
-                  </p>
+                  <p class="chat-group-user__name"> ${name} </p>
                   <a class="chat-group-user__btn--remove"> 削除 </a>
                 </div>`;
     $('#chat-group-users').append(html);
@@ -33,7 +32,7 @@ $(function() {
       })
       .done(function(data) {
         $.each(data, function(i, user) {
-        searchedUserList(user);
+          searchedUserList(user);
         });
       })
      .fail(function() {
