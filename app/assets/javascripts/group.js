@@ -1,6 +1,7 @@
 $(function() {
+
   function searchedUserList(user) {
-    var html = `<div class="chat-group-user">
+    var html = `<div class="chat-group-user searched">
                   <p class="chat-group-user__name"> ${user.name} </p>
                     <a class="chat-group-user__btn chat-group-user__btn--add" data-user-id=${user.id} data-user-name=${user.name} > 追加 </a>
                 </div>`;
@@ -8,7 +9,7 @@ $(function() {
   }
 
   function addedUserList(name, id) {
-    var html = `<div class="chat-group-user">
+    var html = `<div class="chat-group-user added">
                   <input name="group[user_ids][]" value="${id}" type="hidden">
                   <p class="chat-group-user__name"> ${name} </p>
                     <a class="chat-group-user__btn chat-group-user__btn--remove"> 削除 </a>
@@ -16,10 +17,12 @@ $(function() {
     $('#chat-group-users').append(html);
   }
 
+  var preInput = '';
+
   $('#search').on('keyup', function() {
-    var input = $('#search').val();
-    var preInput = '';
+    var input = $.trim($('#search').val());
     if(preInput !== input){
+      $('.searched').remove();
       $.ajax({
         type: 'get',
         url: '/users.json',
@@ -36,6 +39,7 @@ $(function() {
      .fail(function() {
        alert('error');
      });
+     preInput = input;
     }
   });
 
@@ -51,6 +55,7 @@ $(function() {
     $(this).parent().remove();
   })
 });
+
 
 
 
