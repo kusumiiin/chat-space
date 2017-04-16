@@ -124,6 +124,9 @@ body,
                     font-size: 14px;
                     color: $font-gray;
                 }
+                &--image {
+                    padding-left: 40px;
+                }
             }
         }
         &__bottom {

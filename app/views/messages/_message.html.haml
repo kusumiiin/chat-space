@@ -3,6 +3,6 @@
   .message__data--date= message.created_at
   .message__data--text
     =message.body
-    %br
-      -if message.image?
-        =image_tag message.image.url
+  .message__data--image
+    -if message.image?
+      =image_tag message.image.url
