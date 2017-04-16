@@ -1,4 +1,8 @@
 .message__data
   .message__data--name= message.user.name
   .message__data--date= message.created_at
-  .message__data--text= message.body
+  .message__data--text
+    =message.body
+    %br
+      -if message.image?
+        =image_tag message.image.url
