@@ -13,6 +13,11 @@ $(function() {
                      <div class="message__data--image">
                      </div>
                 </div>`;
+    if (message.image.url) {
+      var semiHtml = html
+      var imageHtml = $(semiHtml).find('.message__data--image').append(`<img src="${message.image.url}">`);
+      var html = $(semiHtml).append(imageHtml);
+    }
     return html
   }
   function buildFLASH(flash) {
@@ -40,11 +45,6 @@ $(function() {
       var flash_message = buildFLASH(data.flash);
       $('#body').prepend(flash_message);
       var html = buildHTML(data.message);
-      if (data.message.image.url) {
-        var semiHtml = buildHTML(data.message);
-        var imageHtml = $(semiHtml).find('.message__data--image').append(`<img src="${data.message.image.url}">`);
-        var html =$(semiHtml).append($(imageHtml));
-      }
       $('#list').append(html);
       var height = $('#list').height();
       $("#message_wrapper").animate({scrollTop: height});
