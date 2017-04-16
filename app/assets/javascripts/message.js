@@ -1,34 +1,19 @@
 $(function() {
   function buildHTML(message) {
-    if (message.image.url == null) {
-      var html = `<div class="message__data">
-                   <div class="message__data--name">
-                     ${message.user_name}
-                   </div>
-                   <div class="message__data--date">
-                     ${message.created_at}
-                   </div>
-                   <div class="message__data--text">
-                     ${message.body}
-                   </div>
-                 </div>`;
-    } else {
-      var html = `<div class="message__data">
-                   <div class="message__data--name">
-                     ${message.user_name}
-                   </div>
-                   <div class="message__data--date">
-                     ${message.created_at}
-                   </div>
-                   <div class="message__data--text">
-                     ${message.body}
-                     <br>
-                       <img src="${message.image.url}">
-                     </br>
-                   </div>
-                 </div>`
-      }
-     return html;
+    var html = `<div class="message__data">
+                     <div class="message__data--name">
+                       ${message.user_name}
+                     </div>
+                     <div class="message__data--date">
+                       ${message.created_at}
+                     </div>
+                     <div class="message__data--text">
+                       ${message.body}
+                     </div>
+                     <div class="message__data--image">
+                     </div>
+                </div>`;
+    return html
   }
   function buildFLASH(flash) {
     var flash_message;
@@ -43,8 +28,6 @@ $(function() {
     e.preventDefault();
     var form = $('#new_message').get()[0];
     var formData = new FormData(form);
-    var textField = $('#text_field');
-    var message = textField.val();
     $.ajax({
       type: 'post',
       url: 'messages.json',
@@ -54,11 +37,14 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
-      console.log(data)
-
       var flash_message = buildFLASH(data.flash);
       $('#body').prepend(flash_message);
       var html = buildHTML(data.message);
+      if (data.message.image.url) {
+        var semiHtml = buildHTML(data.message);
+        var imageHtml = $(semiHtml).find('.message__data--image').append(`<img src="${data.message.image.url}">`);
+        var html =$(semiHtml).append($(imageHtml));
+      }
       $('#list').append(html);
       var height = $('#list').height();
       $("#message_wrapper").animate({scrollTop: height});
