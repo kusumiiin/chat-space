@@ -19,7 +19,6 @@ CarrierWave.configure do |config|
         config.storage = :fog
         config.fog_directory  = 'chat-space-kusumi'
         config.asset_host = 'https://s3.amazonaws.com/chat-space-kusumis'
-    end
     when 'test'
         config.storage = :file
     end
