@@ -7,14 +7,14 @@ $(function() {
                      <div class="message__data--date">
                        ${message.created_at}
                      </div>
-                     <div class="message__data--text">
+                     <div class="message__data--content">
                        ${message.body}
-                     </div>
-                     <div class="message__data--image">
                      </div>
                   </div>`);
     if (message.image.url) {
-      html.find('.message__data--image').append(`<img src="${message.image.url}">`);
+      html.find('.message__data--content').append(`<div class="message__data--content--image">
+                                                     <img src="${message.image.url}">
+                                                   </div>`);
     }
     return html;
   }
