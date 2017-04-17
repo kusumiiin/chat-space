@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message) {
-    var html = `<div class="message__data">
+    var html = $(`<div class="message__data">
                      <div class="message__data--name">
                        ${message.user_name}
                      </div>
@@ -12,13 +12,11 @@ $(function() {
                      </div>
                      <div class="message__data--image">
                      </div>
-                </div>`;
+                  </div>`);
     if (message.image.url) {
-      var semiHtml = html
-      var imageHtml = $(semiHtml).find('.message__data--image').append(`<img src="${message.image.url}">`);
-      var html = $(semiHtml).append(imageHtml);
+      html.find('.message__data--image').append(`<img src="${message.image.url}">`);
     }
-    return html
+    return html;
   }
   function buildFLASH(flash) {
     var flash_message;
