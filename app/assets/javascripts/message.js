@@ -11,7 +11,6 @@ $(function() {
         datatype: 'json'
       })
       .done(function(data) {
-        console.log(data)
         $.each(data.messages, function(i, message) {
           var html = buildHTML(message);
           $('#list').append(html);
