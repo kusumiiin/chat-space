@@ -1,6 +1,30 @@
 $(function() {
+
+  function autoReload() {
+
+      var latest_message_id = $('.message__data').last().attr('data-id');
+
+      $.ajax({
+        type: 'get',
+        url: 'messages.json',
+        data: latest_message_id,
+        datatype: 'json'
+      })
+      .done(function(data) {
+        $.each(data.messages, function(i, message) {
+          var html = buildHTML(message);
+          $('#list').append(html);
+          var height = $('#list').height();
+          $("#message_wrapper").animate({scrollTop: height});
+        })
+      })
+      .fail(function() {
+        console.log("error");
+      });
+  }
+
   function buildHTML(message) {
-    var html = $(`<div class="message__data">
+    var html = $(`<div class="message__data" data-id="${message.id}">
                      <div class="message__data--name">
                        ${message.user_name}
                      </div>
@@ -18,6 +42,7 @@ $(function() {
     }
     return html;
   }
+
   function buildFLASH(flash) {
     var flash_message;
     $.each(flash, function(key, value){
@@ -27,6 +52,9 @@ $(function() {
     });
     return flash_message;
   }
+
+  setInterval(autoReload, 2000);
+
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var form = $('#new_message').get()[0];
