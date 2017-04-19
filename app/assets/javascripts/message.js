@@ -7,10 +7,11 @@ $(function() {
       $.ajax({
         type: 'get',
         url: 'messages.json',
-        data: latest_message_id,
+        data: { latest_message_id: latest_message_id },
         datatype: 'json'
       })
       .done(function(data) {
+        console.log(data)
         $.each(data.messages, function(i, message) {
           var html = buildHTML(message);
           $('#list').append(html);
@@ -19,7 +20,7 @@ $(function() {
         })
       })
       .fail(function() {
-        console.log("error");
+        console.error;
       });
   }
 
@@ -53,7 +54,7 @@ $(function() {
     return flash_message;
   }
 
-  setInterval(autoReload, 2000);
+  setInterval(autoReload, 5000);
 
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
