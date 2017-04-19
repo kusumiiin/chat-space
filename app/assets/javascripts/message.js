@@ -19,7 +19,7 @@ $(function() {
         })
       })
       .fail(function() {
-        console.error;
+        console.error('エラーだよ(T T)');
       });
   }
 
@@ -53,7 +53,7 @@ $(function() {
     return flash_message;
   }
 
-  setInterval(autoReload, 5000);
+  setInterval(autoReload, 1000);
 
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
