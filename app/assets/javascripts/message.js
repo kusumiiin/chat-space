@@ -1,6 +1,30 @@
 $(function() {
+
+  function autoReload() {
+
+      var latestMessageId = $('.message__data').last().attr('data-id');
+
+      $.ajax({
+        type: 'get',
+        url: 'messages.json',
+        data: { latest_message_id: latestMessageId },
+        datatype: 'json'
+      })
+      .done(function(data) {
+        $.each(data.messages, function(i, message) {
+          var html = buildHTML(message);
+          $('#list').append(html);
+          var height = $('#list').height();
+          $("#message_wrapper").animate({scrollTop: height});
+        })
+      })
+      .fail(function() {
+        console.error('エラーだよ(T T)');
+      });
+  }
+
   function buildHTML(message) {
-    var html = $(`<div class="message__data">
+    var html = $(`<div class="message__data" data-id="${message.id}">
                      <div class="message__data--name">
                        ${message.user_name}
                      </div>
@@ -18,15 +42,21 @@ $(function() {
     }
     return html;
   }
+
   function buildFLASH(flash) {
-    var flash_message;
+    var flashMessage;
     $.each(flash, function(key, value){
-      flash_message = `<div class="${key}">
+      flashMessage = `<div class="${key}">
                           ${value}
                        </div>`;
     });
-    return flash_message;
+    return flashMessage;
   }
+
+  if (document.URL.match("/messages")) {
+    setInterval(autoReload, 1000);
+  }
+
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var form = $('#new_message').get()[0];
@@ -40,8 +70,8 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
-      var flash_message = buildFLASH(data.flash);
-      $('#body').prepend(flash_message);
+      var flashMessage = buildFLASH(data.flash);
+      $('#body').prepend(flashMessage);
       var html = buildHTML(data.message);
       $('#list').append(html);
       var height = $('#list').height();
