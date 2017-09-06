@@ -53,6 +53,10 @@ $(function() {
     return flashMessage;
   }
 
+  function deleteFLASH() {
+    $('.success').remove();
+  }
+
   if (document.URL.match("/messages")) {
     setInterval(autoReload, 1000);
   }
@@ -71,7 +75,8 @@ $(function() {
     })
     .done(function(data) {
       var flashMessage = buildFLASH(data.flash);
-      $('#body').prepend(flashMessage);
+      $('#body').prepend(flashMessage)
+      setTimeout(deleteFLASH, 700);
       var html = buildHTML(data.message);
       $('#list').append(html);
       var height = $('#list').height();
