@@ -50,7 +50,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
-
+  gem 'rails_best_practices'
 
 end
 

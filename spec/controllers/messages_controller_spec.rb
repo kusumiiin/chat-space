@@ -24,7 +24,6 @@ describe MessagesController do
 
     it "populates an array of message" do
       expect(assigns(:message)).to be_a_new(Message)
-
     end
 
 
@@ -34,7 +33,6 @@ describe MessagesController do
   end
 
   describe 'post #create' do
-
 
     it "can save message" do
       expect {

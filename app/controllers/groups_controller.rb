@@ -7,7 +7,6 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @user = User.where.not(id: current_user[:id])
   end
 
   def create
