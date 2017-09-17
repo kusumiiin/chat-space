@@ -1,6 +1,6 @@
 .message__data{data: {id: message.id}}
   .message__data--name= message.user.name
-  .message__data--date= message.created_at
+  .message__data--date= message.created_time
   .message__data--content
     =message.body
     -if message.image?
