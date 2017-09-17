@@ -6,4 +6,8 @@ class Message < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  def created_time
+    created_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M:%S")
+  end
+
 end
