@@ -46,7 +46,7 @@ $(function() {
   function buildFLASH(flash) {
     var flashMessage;
     $.each(flash, function(key, value){
-      flashMessage = `<div class="${key}">
+      flashMessage = `<div class="${key}", id="flash">
                           ${value}
                        </div>`;
     });
@@ -54,7 +54,7 @@ $(function() {
   }
 
   function deleteFLASH() {
-    $('.success').remove();
+    $('#flash').remove();
   }
 
   if (document.URL.match("/messages")) {
